@@ -1,15 +1,25 @@
 'use client'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import styles from "./NavBar.module.css"
 
 export default function NavBar(){
     const path = usePathname();
 
     return (
         <nav>
-            <Link href="/" className={`${styles.link} ${path === "/" ? styles.active : ""}`}>Home</Link>
-            <Link href="/about" className={[styles.link, path === "/about" ? styles.active : ""].join(" ")}>About Us</Link>
+            <Link href="/"><span className={path === "/" ? "active" : "" }>Home</span></Link>
+            <Link href="/about"><span className={path === "/about" ? "active" : ""}>About</span></Link>
+            <style jsx>{`
+                nav{
+                  background-color: tomato;
+                }
+                a{
+                  color: blue;
+                }
+                .active{
+                  color: yellow;
+                }
+            `}</style>
         </nav>
         )
 }
